@@ -1,20 +1,63 @@
-﻿// laba4_z2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <vector>
 
-#include <iostream>
+template <typename T>
+class Matrix {
+private:
+    std::vector<std::vector<T>> data;
+    int rows;
+    int cols;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+public:
+    Matrix(int numRows, int numCols) : rows(numRows), cols(numCols) {
+        data.resize(rows, std::vector<T>(cols));
+    }
+
+    T& operator()(int row, int col) {
+        return data[row][col];
+    }
+
+    void print() {
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                std::cout << data[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+};
+
+int main() {
+    Matrix<float> matrixFloat(2, 3);
+    matrixFloat(0, 0) = 2.5;
+    matrixFloat(0, 1) = 3.3;
+    matrixFloat(0, 2) = 2.4;
+    matrixFloat(1, 0) = 4.5;
+    matrixFloat(1, 1) = 5.6;
+    matrixFloat(1, 2) = 3.7;
+
+    std::cout << "Matrix type <float>:" << std::endl;
+    matrixFloat.print();
+
+    Matrix<double> matrixDouble(3, 2);
+    matrixDouble(0, 0) = 2.1;
+    matrixDouble(0, 1) = 1.2;
+    matrixDouble(1, 0) = 1.5;
+    matrixDouble(1, 1) = 2.4;
+    matrixDouble(2, 0) = 4.5;
+    matrixDouble(2, 1) = 5.6;
+
+    std::cout << "\nMatrix type <double>:" << std::endl;
+    matrixDouble.print();
+
+    Matrix<int> matrixInt(2, 2);
+    matrixInt(0, 0) = 2;
+    matrixInt(0, 1) = 4;
+    matrixInt(1, 0) = 5;
+    matrixInt(1, 1) = 3;
+
+    std::cout << "\nMatrix type <int>:" << std::endl;
+    matrixInt.print();
+
+    return 0;
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.

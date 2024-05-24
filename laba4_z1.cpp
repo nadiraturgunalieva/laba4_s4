@@ -28,7 +28,7 @@ int findSecondMaxIndex(T* arr, int size) {
 int main()
 {
     float arrFloat[] = { 1.5, 7.6, 2.7, 6.8, 5.9 };
-    double arrDouble[] = { 2.5, 4.6, 3.7, 5.8 };
+    double arrDouble[] = { 2.5, 4.6, 3.7, 5.7 };
     int arrInt[] = { 1, 3, 8, 4, 2 };
     char arrChar[] = { 'i', 'l', 'y', 's', 'm' };
 
